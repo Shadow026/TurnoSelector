@@ -1,4 +1,4 @@
-* {
+/* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -91,4 +91,445 @@ button.peligro:hover {
     padding: 20px;
     text-align: center;
     color: #6c757d;
+}
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #5B2D8B, #5FAE4E);
+}
+
+/* Semi círculo negro fijo en la parte inferior */
+body::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: #000;
+    border-radius: 50% 50% 0 0;
+    transform: scaleX(1.8);
+    z-index: 0;
+    opacity: 0.9;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
+}
+
+.img {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    animation: slideIn 0.8s ease;
+}
+
+.img img {
+    width: 150px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    border: 2px solid rgba(255,255,255,0.5);
+    transition: all 0.3s ease;
+}
+
+.img img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(91, 45, 139, 0.4);
+    border-color: white;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+/* ===== ESTILOS BASE DE PANTALLAS ===== */
+.pantalla {
+    display: none;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px 30px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pantalla.activa {
+    display: block;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+    text-align: center;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #5B2D8B, #5FAE4E);
+    border-radius: 2px;
+}
+
+/* ===== BOTONES ===== */
+button {
+    display: block;
+    width: 100%;
+    padding: 16px 24px;
+    margin: 15px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: linear-gradient(135deg, #5B2D8B, #6B3D9B);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(91, 45, 139, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(91, 45, 139, 0.4);
+    background: linear-gradient(135deg, #6B3D9B, #5B2D8B);
+}
+
+button.secundario {
+    background: linear-gradient(135deg, #5FAE4E, #4E9E3E);
+    box-shadow: 0 4px 15px rgba(95, 174, 78, 0.3);
+}
+
+button.secundario:hover {
+    background: linear-gradient(135deg, #6FBE5E, #5FAE4E);
+    box-shadow: 0 6px 20px rgba(95, 174, 78, 0.4);
+}
+
+button.peligro {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+}
+
+button.peligro:hover {
+    background: linear-gradient(135deg, #e84555, #dc3545);
+    box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+}
+
+/* ===== TURNOS ===== */
+.turno-actual {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, #5B2D8B, #5FAE4E);
+    color: white;
+    border-radius: 15px;
+    margin: 25px 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    letter-spacing: 3px;
+    border: 2px solid rgba(255,255,255,0.3);
+}
+
+.turno-item {
+    padding: 15px 20px;
+    margin: 12px 0;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-left: 6px solid #5B2D8B;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    color: #333;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.turno-item:hover {
+    transform: translateX(5px);
+    border-left-color: #5FAE4E;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.lista-turnos {
+    margin: 30px 0;
+    padding: 20px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 15px;
+}
+
+.lista-turnos h3 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    border-bottom: 2px solid #5FAE4E;
+    padding-bottom: 10px;
+}
+
+.vacio {
+    padding: 30px;
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    background: rgba(255,255,255,0.7);
+    border-radius: 10px;
+    border: 2px dashed #5B2D8B;
+}
+
+/* ===== TEMAS DIFERENTES PARA CADA PANTALLA ===== */
+
+/* Pantalla Inicio - Tema Morado/Verde original */
+#pantalla-inicio {
+    background: rgba(255,255,255,0.95);
+    border: 3px solid #5B2D8B;
+}
+
+/* Pantalla Turno - Tema Azul */
+#pantalla-turno {
+    background: rgba(255,255,255,0.95);
+    border: 3px solid #1a4b8c;
+}
+
+#pantalla-turno h1::after {
+    background: linear-gradient(90deg, #1a4b8c, #c0392b);
+}
+
+#pantalla-turno .turno-item {
+    border-left-color: #1a4b8c;
+}
+
+/* Pantalla Mostrar - Tema Naranja */
+#pantalla-mostrar {
+    background: rgba(255,255,255,0.95);
+    border: 3px solid #e67e22;
+}
+
+#pantalla-mostrar h1::after {
+    background: linear-gradient(90deg, #e67e22, #f1c40f);
+}
+
+#pantalla-mostrar .turno-actual {
+    background: linear-gradient(135deg, #e67e22, #f1c40f);
+}
+
+/* Pantalla Administrador - Tema Negro/Dorado */
+#pantalla-administrador {
+    background: rgba(255,255,255,0.95);
+    border: 3px solid #2c3e50;
+}
+
+#pantalla-administrador h1::after {
+    background: linear-gradient(90deg, #2c3e50, #f39c12);
+}
+
+#pantalla-administrador .turno-actual {
+    background: linear-gradient(135deg, #2c3e50, #f39c12);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet */
+@media (max-width: 768px) {
+    body::after {
+        height: 100px;
+        transform: scaleX(2);
+    }
+    
+    .container {
+        padding: 20px;
+    }
+    
+    .pantalla {
+        padding: 30px 20px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .turno-actual {
+        font-size: 2.2rem;
+        padding: 20px;
+    }
+    
+    button {
+        padding: 14px 20px;
+        font-size: 1rem;
+    }
+}
+
+/* Móvil */
+@media (max-width: 480px) {
+    body::after {
+        height: 70px;
+        transform: scaleX(2.2);
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    .pantalla {
+        padding: 25px 15px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+    
+    h1::after {
+        width: 60px;
+        height: 3px;
+    }
+    
+    .turno-actual {
+        font-size: 1.8rem;
+        padding: 15px;
+        margin: 20px 0;
+    }
+    
+    .turno-item {
+        padding: 12px 15px;
+        font-size: 0.95rem;
+    }
+    
+    button {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+        margin: 10px 0;
+    }
+    
+    .lista-turnos {
+        padding: 15px;
+        margin: 20px 0;
+    }
+}
+
+/* Móvil pequeño */
+@media (max-width: 320px) {
+    body::after {
+        height: 50px;
+    }
+    
+    h1 {
+        font-size: 1.3rem;
+    }
+    
+    .turno-actual {
+        font-size: 1.5rem;
+        padding: 12px;
+    }
+    
+    .turno-item {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+    }
+}
+
+/* ===== ANIMACIONES ADICIONALES ===== */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.turno-actual {
+    animation: pulse 2s infinite;
+}
+
+/* Scroll personalizado */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(91, 45, 139, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #5B2D8B, #5FAE4E);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #6B3D9B, #6FBE5E);
 }
