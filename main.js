@@ -1,6 +1,8 @@
 // Array para almacenar los turnos
 let turnos = [];
 let turnoActualIndex = -1;
+let temporizadorMensaje = null;
+
 
 // Función para cargar pantallas de archivos externos
 async function cargarPantallas() {
@@ -73,6 +75,34 @@ function generarTurno(tipo) {
     }
 
     actualizarListaTurnos();
+    mostrarMensajeEmergente(codigoTurno);
+}
+
+// NUEVA FUNCIÓN para mostrar mensaje
+function mostrarMensajeEmergente(turno) {
+    // Limpiar temporizador anterior
+    if (temporizadorMensaje) {
+        clearTimeout(temporizadorMensaje);
+    }
+
+    const mensajeEmergente = document.getElementById('mensaje-emergente');
+    const textoMensaje = document.getElementById('texto-mensaje');
+    
+    if (!mensajeEmergente || !textoMensaje) return;
+    
+    // Determinar icono según tipo
+    const icono = turno.tipo === 'remesas' ? '📄' : '💰';
+    
+    // Mostrar el mensaje con el turno
+    textoMensaje.innerHTML = `${icono} Su turno es: <span style="background: white; color: #5B2D8B; padding: 5px 15px; border-radius: 30px; margin-left: 10px;">${turno.codigo}</span>`;
+    
+    // Mostrar el mensaje
+    mensajeEmergente.style.display = 'flex';
+    
+    // Ocultar después de 3 segundos (3000ms)
+    temporizadorMensaje = setTimeout(() => {
+        mensajeEmergente.style.display = 'none';
+    }, 4000); // CAMBIA AQUÍ EL TIEMPO (2000 = 2s, 4000 = 4s, etc.)
 }
 
 // Función para actualizar la lista de turnos en la pantalla de turno
@@ -133,7 +163,7 @@ function actualizarVistas() {
 // Función para terminar el turno actual
 function terminarTurno() {
     if (turnoActualIndex === -1 || turnoActualIndex >= turnos.length) {
-        alert('No hay turno en curso');
+        alert('❌ No hay turno en curso');
         return;
     }
 

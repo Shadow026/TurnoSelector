@@ -533,3 +533,72 @@ button.peligro:hover {
 ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(135deg, #6B3D9B, #6FBE5E);
 }
+
+/* OCULTAR LA LISTA DE TURNOS EN PANTALLA 2 */
+#pantalla-turno .lista-turnos {
+    display: none !important;
+}
+
+.mensaje-emergente {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    backdrop-filter: blur(3px);
+}
+
+.mensaje-contenido {
+    background: linear-gradient(135deg, #5B2D8B, #5FAE4E);
+    padding: 30px 40px;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border: 3px solid white;
+    animation: aparecer 0.3s ease;
+}
+
+#texto-mensaje {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    letter-spacing: 2px;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #texto-mensaje {
+        font-size: 2rem;
+    }
+    .mensaje-contenido {
+        padding: 20px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    #texto-mensaje {
+        font-size: 1.5rem;
+    }
+    .mensaje-contenido {
+        padding: 15px 20px;
+        border-radius: 30px;
+    }
+}
+

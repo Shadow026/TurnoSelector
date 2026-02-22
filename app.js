@@ -2,6 +2,8 @@
 let turnos = [];
 let turnoActualIndex = -1;
 
+
+
 // Función para cambiar de pantalla
 function irA(pantalla) {
     // Ocultar todas las pantallas
@@ -48,6 +50,12 @@ function generarTurno(tipo) {
     }
 
     actualizarListaTurnos();
+    //ALERT - Esto funciona en TODOS los navegadores
+    if (tipo === 'remesas') {
+        alert('TURNO GENERADO - Remesas: ' + codigoTurno.codigo);
+    } else {
+        alert('TURNO GENERADO - Pago de Recibos: ' + codigoTurno.codigo);
+    }
 }
 
 // Función para actualizar la lista de turnos en la pantalla de turno
@@ -108,7 +116,7 @@ function actualizarVistas() {
 // Función para terminar el turno actual
 function terminarTurno() {
     if (turnoActualIndex === -1 || turnoActualIndex >= turnos.length) {
-        alert('No hay turno en curso');
+        alert('No hay turno en cursos');
         return;
     }
 
