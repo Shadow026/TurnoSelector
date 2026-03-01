@@ -1,0 +1,31 @@
+{
+  "name": "turnoselector",
+  "version": "1.0.0",
+  "description": "Sistema de turnos para organizar y optimizar filas de espera",
+  "homepage": "https://github.com/Shadow026/TurnoSelector#readme",
+  "bugs": {
+    "url": "https://github.com/Shadow026/TurnoSelector/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shadow026/TurnoSelector.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "devDependencies": {
+    "@types/express": "5.0.6",
+    "nodemon": "3.1.14"
+  },
+  "dependencies": {
+    "express": "5.2.1"
+  }
+}

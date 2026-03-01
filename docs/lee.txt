@@ -1,0 +1,2 @@
+Aqui ira la documentacion de partes de codigo/ frontend / funcionamiento/ backend.
+Mas que todo para actualizaciones futuras o refactoreo

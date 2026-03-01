@@ -1,0 +1,18 @@
+Hola esto es un txt rapido de lo que se usa hasta el momento 
+
+Node.js v24.14.0
+
+Extensiones o librerias npm    |   Instalarla
+"express": "5.2.1"             |   npm install express 5.2.1   (RestAPI)
+
+
+Las dependencias Dev son para tu maquina no para el servidor
+
+Extensiones o librerias npm DEV |   Instalarla
+"nodemon": "3.1.14"             |   npm i nodemon -D
+"express": "5.2.1"              |   npm i --save-dev @types/express       (Es par tener los metodos vsCode)
+
+
+Comando para ejecutar el servidor o la prueba usando nodemon(Para ver cambios en tiempo real)
+
+ npm run dev
