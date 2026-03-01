@@ -602,3 +602,22 @@ button.peligro:hover {
     }
 }
 
+/* estilos para el dashboard del administrador */
+.dashboard-admin {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.dashboard-admin .card {
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    padding: 25px;
+}
+
+@media (max-width: 768px) {
+    .dashboard-admin {
+        grid-template-columns: 1fr;
+    }
+}

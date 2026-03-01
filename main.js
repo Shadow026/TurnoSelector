@@ -43,6 +43,7 @@ function irA(pantalla) {
 
     // Actualizar vistas cuando se llega a mostrar o administrador
     if (pantalla === 'mostrar' || pantalla === 'administrador') {
+        actualizarDashboardAdmin();
         actualizarVistas();
     }
 }
@@ -165,8 +166,51 @@ function terminarTurno() {
     if (turnoActualIndex === -1 || turnoActualIndex >= turnos.length) {
         alert('❌ No hay turno en curso');
         return;
+        actualizarDashboardAdmin();
     }
 
     turnoActualIndex++;
     actualizarVistas();
+}
+
+// funcion para actualizar el dashboard del administrador
+
+let grafica = null;
+
+function actualizarDashboardAdmin() {
+    const remesas = turnos.filter(t => t.tipo === 'remesas').length;
+    const pagos = turnos.filter(t => t.tipo !== 'remesas').length;
+
+    document.getElementById('total-remesas').textContent = remesas;
+    document.getElementById('total-pagos').textContent = pagos;
+
+    // HISTORIAL
+    const historial = document.getElementById('historial-dashboard');
+    historial.innerHTML = '';
+
+    if (turnos.length === 0) {
+        historial.innerHTML = '<div class="vacio">No hay turnos registrados</div>';
+    } else {
+        turnos.forEach((t, i) => {
+            const div = document.createElement('div');
+            div.className = 'turno-item';
+            div.textContent = `#${i + 1} - ${t.codigo} (${t.tipo})`;
+            historial.appendChild(div);
+        });
+    }
+
+    // GRÁFICA
+    const ctx = document.getElementById('grafica-turnos');
+    if (grafica) grafica.destroy();
+
+    grafica = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Remesas', 'Pagos'],
+            datasets: [{
+                data: [remesas, pagos],
+                backgroundColor: ['#5FAE4E', '#5B2D8B']
+            }]
+        }
+    });
 }
