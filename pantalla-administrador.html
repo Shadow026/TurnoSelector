@@ -1,14 +1,32 @@
 <!-- PANTALLA 4: ADMINISTRADOR -->
 <div id="pantalla-administrador" class="pantalla">
     <h1>Administrador</h1>
+
+    <!-- Turno actual -->
     <div id="turno-actual-admin" class="turno-actual">
         Ninguno
     </div>
+
     <button class="peligro" onclick="terminarTurno()">Terminar Turno</button>
 
-    <div class="lista-turnos">
-        <h3>Próximos Turnos:</h3>
-        <div id="proximos-turnos"></div>
+    <!-- Dashboard -->
+    <div class="dashboard-admin">
+
+        <!-- Estadistica -->
+        <div class="card">
+            <h3>Estadísticas del Día</h3>
+            <canvas id="grafica-turnos"></canvas>
+
+            <p>Remesas: <b id="total-remesas">0</b></p>
+            <p>Pago de Recibos: <b id="total-pagos">0</b></p>
+        </div>
+
+        <!-- Historial -->
+        <div class="card">
+            <h3>Historial del Día</h3>
+            <div id="historial-dashboard" class="lista-turnos"></div>
+        </div>
+
     </div>
 
     <button class="secundario" onclick="irA('inicio')">Volver</button>

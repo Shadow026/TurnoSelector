@@ -1,9 +1,18 @@
-<!-- PANTALLA 2: TURNO -->
+<!-- PANTALLA 2: TURNO - Agrega esto después de los botones -->
 <div id="pantalla-turno" class="pantalla">
     <h1>Generar Turno</h1>
-    <button onclick="generarTurno('remesas')">Remesas</button>
-    <button onclick="generarTurno('pago')">Pago de Recibos</button>
+    <button onclick="generarTurno('remesas')">Pago de recibos y remesas</button>
+    <button onclick="generarTurno('pago')">Compra de productos</button>
 
+    <!--MENSAJE EMERGENTE-->
+    <div id="mensaje-emergente" class="mensaje-emergente" style="display: none;">
+        <div class="mensaje-contenido">
+            <span id="texto-mensaje">Su turno es: </span>
+            <div id="estado-guardado" style="font-size: 16px; margin-top: 15px; color: #666; font-weight: 500;"></div>
+        </div>
+    </div>
+
+    <!-- lista original (sigue aquí, pero la ocultaremos con CSS) -->
     <div class="lista-turnos">
         <h3>Turnos Generados:</h3>
         <div id="lista-turnos"></div>
